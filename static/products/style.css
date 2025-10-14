@@ -1,0 +1,682 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--main-gradiant);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff0099, #00ffff);
+    border-radius: 5px;
+}
+
+body {
+    width: 100%;
+    font-family: system-ui, "Segoe UI", Roboto, "Noto Naskh Arabic", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: transparent;
+}
+
+ul {
+    list-style: none;
+}
+
+:root {
+    --main-gradiant: radial-gradient(circle at 15% 85%, rgba(75, 0, 130, 0.7) 0%, transparent 50%), radial-gradient(circle at 85% 15%, rgba(139, 37, 99, 0.8) 0%, transparent 50%), radial-gradient(circle at 45% 60%, rgba(128, 0, 128, 0.6) 0%, transparent 50%), radial-gradient(circle at 70% 40%, rgba(34, 139, 34, 0.4) 0%, transparent 50%), linear-gradient(135deg, #0a0a0a 0%, #2d1b3d 50%, #000000 100%);
+    --card-bg: rgba(224, 163, 255, 0.08);
+    --secondary-gradiant: linear-gradient(180deg, #30cfe7, #c8379b);
+}
+
+
+/* start section background animation */
+
+.animation_bg {
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: clip;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    background: var(--main-gradiant);
+}
+
+@keyframes first {
+    0% {
+        transform: translateY(0) rotate(0) skew(0) matrix3d(0);
+        opacity: .75;
+        background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+    }
+    100% {
+        opacity: 1;
+        background: linear-gradient(-45deg, rgba(255, 105, 180, 0.1), transparent);
+        transform: translateY(-80vh) rotate(360deg) skew(1deg);
+    }
+}
+
+.animation_bg>div:nth-of-type(1) {
+    width: 100px;
+    height: 100px;
+    top: 60%;
+    left: 5%;
+    border: 1px solid #0f37371b;
+    animation: first 8s linear infinite;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+}
+
+.animation_bg>div:nth-of-type(2) {
+    width: 100px;
+    height: 100px;
+    top: 65%;
+    left: 15%;
+    border: 1px solid #0f37371b;
+    animation: first 6s linear infinite;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+    border-radius: 50%;
+}
+
+.animation_bg>div:nth-of-type(3) {
+    width: 100px;
+    top: 85%;
+    left: 25%;
+    height: 80px;
+    animation: first 8s linear infinite;
+    border: 1px solid white;
+    border-bottom: 1px solid #0f37371b;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.animation_bg>div:nth-of-type(4) {
+    width: 50px;
+    height: 100px;
+    top: 55%;
+    left: 35%;
+    animation: first 7s linear infinite;
+    border: 1px solid #0f37371b;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+}
+
+.animation_bg>div:nth-of-type(5) {
+    width: 100px;
+    position: absolute;
+    height: 100px;
+    top: 70%;
+    left: 45%;
+    border: 1px solid #0f37371b;
+    animation: first 6s linear infinite;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+}
+
+.animation_bg>div:nth-of-type(6) {
+    width: 100px;
+    height: 100px;
+    top: 80%;
+    left: 55%;
+    animation: first 8s linear infinite;
+    border: 1px solid #0f37371b;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+}
+
+.animation_bg>div:nth-of-type(7) {
+    width: 100px;
+    height: 100px;
+    top: 80%;
+    left: 65%;
+    border: 1px solid #0f37371b;
+    animation: first 7s linear infinite;
+    clip-path: ellipse(25% 40% at 50% 50%);
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+}
+
+.animation_bg>div:nth-of-type(8) {
+    width: 100px;
+    height: 100px;
+    top: 65%;
+    left: 70%;
+    animation: first 7s linear infinite;
+    border: 1px solid #0f37371b;
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+}
+
+.animation_bg>div:nth-of-type(9) {
+    width: 100px;
+    height: 100px;
+    top: 55%;
+    left: 77%;
+    animation: first 6s linear infinite;
+    border: 1px solid #0f37371b;
+    clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+}
+
+.animation_bg>div:nth-of-type(10) {
+    width: 220px;
+    height: 100px;
+    top: 75%;
+    left: 75%;
+    animation: first 7s linear infinite;
+    border: 1px solid #0f37371b;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+}
+
+
+/* end  section background animation */
+
+
+/* start nav */
+
+nav {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    z-index: 1000;
+    flex-direction: row;
+    position: sticky;
+    top: 20px;
+    justify-content: center;
+}
+
+.nav {
+    width: 95%;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    z-index: 10000;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 5px rgba(245, 245, 245, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.Logo {
+    display: flex;
+    transition: all .7s ease;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.Logo .logo-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.Logo h1 {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: clamp(14px, 2vw, 26px);
+    background: radial-gradient(rgba(139, 37, 99, 0.8), rgba(255, 255, 255, 0.5));
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 15px #e0a3ff;
+    animation: second 2s linear infinite;
+}
+
+@keyframes second {
+    0% {
+        text-shadow: 0 0 5px #e0a3ff;
+    }
+    100% {
+        text-shadow: 0 0 15px #e0a3ff;
+    }
+}
+
+.Logo:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.nav>div:nth-of-type(2) {}
+
+.nav>div:nth-of-type(2) ul {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.nav div:nth-of-type(2) ul a {
+    color: white;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.nav div:nth-of-type(2) ul a:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: linear-gradient(45deg, rgb(250, 108, 185), rgb(172, 126, 228)) 0% 0% / 100%;
+    ;
+    height: 0;
+    width: 100%;
+    z-index: -2;
+    transition: .7s;
+    transform: translateY(-50%);
+    border-radius: 10px;
+}
+
+.nav div:nth-of-type(2) ul a:hover:after {
+    height: 50%;
+}
+
+.hr {
+    width: 90%;
+    display: flex;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav .menu i:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: linear-gradient(45deg, rgb(250, 108, 185), rgb(172, 126, 228)) 0% 0% / 100%;
+    ;
+    height: 0;
+    width: 100%;
+    z-index: -2;
+    transition: .4s;
+    transform: translateY(-50%);
+    border-radius: 10px;
+}
+
+.nav .menu i:hover:after {
+    height: 40px;
+    width: 35px;
+}
+
+.menu {
+    display: none;
+    z-index: 1;
+    color: white;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.menu i {
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+
+/*--end nav */
+
+.hr hr {
+    width: 40%;
+    border: .5px solid rgba(255, 255, 255, 0.06);
+    height: 0.5px;
+    background: transparent;
+    animation: hr 2s ease-in-out infinite alternate;
+}
+
+@keyframes hr {
+    0% {
+        width: 40%;
+    }
+    100% {
+        width: 80%;
+    }
+}
+
+
+/* start section heading */
+
+.heading {
+    width: 100%;
+    height: 300px;
+    padding: 80px 0;
+    display: flex;
+    gap: 40px;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.heading>p:nth-child(1) {
+    font-size: clamp(12px, 4vw, 24px);
+    letter-spacing: 5px;
+    color: rgba(245, 245, 245, 0.3);
+}
+
+.heading h3 {
+    font-size: clamp(25px, 6vw, 75px);
+    letter-spacing: 3px;
+    word-spacing: 2px;
+    background: var(--secondary-gradiant);
+    background-size: 100%;
+    text-shadow: 0 0 15px;
+    background-clip: text;
+    color: transparent;
+    animation: third 3s ease-in infinite alternate;
+}
+
+.heading span {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading p {
+    font-size: clamp(25px, 6vw, 35px);
+    letter-spacing: 3px;
+    word-spacing: 2px;
+    background: var(--secondary-gradiant);
+    background-size: 100%;
+    text-shadow: 0 0 15px;
+    background-clip: text;
+    color: transparent;
+    animation: third 3s ease-in infinite alternate;
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+}
+
+.heading .back a:hover {
+    cursor: pointer;
+    color: white;
+    text-shadow: 0 0 15px white;
+    transform: translate(0, -15px);
+    transition: .5s;
+}
+
+.heading .back a {
+    text-shadow: 0 0 5px white;
+    font-size: clamp(7px, 2vw, 18px);
+    text-align: center;
+    word-spacing: 5px;
+    color: rgba(245, 245, 245, 0.3);
+}
+
+.heading form button {
+    padding: 20px;
+    width: 100%;
+    border: none;
+    animation: icon 3s linear infinite alternate;
+    color: white;
+    background: linear-gradient(45deg, #30cfe7, #c8379b);
+    border-radius: 10px;
+    font-size: clamp(12px, 2vw, 20px);
+    box-shadow: 0 0 1px white;
+    transition: .75s;
+}
+
+.heading form button:hover {
+    box-shadow: 0 0 15px white;
+    cursor: pointer;
+    color: white;
+    transform: translate(0, -15px);
+    transition: .5s;
+}
+
+.heading span>p:nth-child(3) {
+    font-size: clamp(7px, 2vw, 18px);
+    word-spacing: 5px;
+    text-align: center;
+    color: rgba(245, 245, 245, 0.3);
+}
+
+@keyframes third {
+    0% {
+        text-shadow: 0 0 5px rgba(224, 163, 255, 0.419);
+    }
+    100% {
+        text-shadow: 0px 0px 10px rgb(224, 163, 255);
+    }
+}
+
+.connection {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.connection .connection_form {
+    width: 47%;
+    border-radius: 10px;
+    background: var(--card-bg);
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.connection .connection_form h2 {
+    font-size: clamp(25px, 6vw, 75px);
+    letter-spacing: 3px;
+    word-spacing: 2px;
+    background: var(--secondary-gradiant);
+    background-size: 100%;
+    text-shadow: 0 0 15px;
+    background-clip: text;
+    color: transparent;
+    animation: third 3s ease-in infinite alternate;
+}
+
+.connection p {
+    font-size: clamp(7px, 2vw, 18px);
+    text-align: center;
+    word-spacing: 5px;
+    color: rgba(245, 245, 245, 0.3);
+}
+
+.connection a {
+    padding: 12px;
+    width: 100%;
+    border: none;
+    animation: icon 3s linear infinite alternate;
+    color: white;
+    background: linear-gradient(45deg, #30cfe7, #c8379b);
+    border-radius: 10px;
+    font-size: clamp(8px, 2vw, 14px);
+    box-shadow: 0 0 1px white;
+    transition: .75s;
+}
+
+.connection a:hover {
+    box-shadow: 0 0 15px white;
+    cursor: pointer;
+    color: white;
+    transform: translate(0, -15px);
+    transition: .5s;
+}
+
+.connection .connection_form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.connection .connection_form form input {
+    padding: 15px;
+    color: rgba(245, 245, 245, 0.212);
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0 0 5px white inset;
+    font-size: 18px;
+    background-clip: text;
+    background: rgba(255, 255, 255, 0.371);
+    border-radius: 10px;
+}
+
+.connection .connection_form form input::placeholder {
+    color: rgba(255, 255, 255, 0.714);
+}
+
+.connection .connection_form form input:focus {
+    box-shadow: 0 0 15px white;
+    transition: .5s;
+}
+
+.connection .connection_form form button {
+    padding: 20px;
+    width: 100%;
+    border: none;
+    animation: icon 3s linear infinite alternate;
+    color: white;
+    background: linear-gradient(45deg, #30cfe7, #c8379b);
+    border-radius: 10px;
+    font-size: clamp(12px, 2vw, 20px);
+    box-shadow: 0 0 1px white;
+    transition: .75s;
+}
+
+.connection .connection_form form button:hover {
+    box-shadow: 0 0 15px white;
+    cursor: pointer;
+    color: white;
+    transform: translate(0, -15px);
+    transition: .5s;
+}
+
+footer {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    position: relative;
+    top: 80px;
+    padding: 120px 0;
+    justify-content: center;
+}
+
+footer .links {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+footer .links a {
+    font-size: clamp(10px, 2vw, 16px);
+    color: rgb(255, 255, 255);
+    text-transform: capitalize;
+    transition: 2s;
+    position: relative;
+    border: 0 px solid white;
+    transform: translateY(-10px);
+}
+
+footer .links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: whitesmoke;
+    text-shadow: 0 0 5px whitesmoke;
+    box-shadow: 0 0 5px whitesmoke;
+    width: 0;
+    height: 1px;
+    transition: 0.5s;
+}
+
+footer .links a:hover::after {
+    cursor: pointer;
+    width: 100%;
+    background: whitesmoke;
+    text-shadow: 0 0 15px whitesmoke;
+    box-shadow: 0 0 15px whitesmoke;
+}
+
+footer .information {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .information p {
+    font-size: clamp(10px, 2vw, 18px);
+    color: rgba(255, 255, 255, 0.682);
+}
+
+footer .developer span {
+    font-size: clamp(10px, 2vw, 18px);
+    color: rgba(255, 255, 255, 0.682);
+}
+
+footer .developer a {
+    font-size: clamp(10px, 2vw, 18px);
+    color: rgb(255, 255, 255);
+    text-transform: capitalize;
+    transition: 2s;
+    position: relative;
+    border: 0 px solid white;
+    transform: translateY(-10px);
+}
+
+footer .developer a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: whitesmoke;
+    text-shadow: 0 0 5px whitesmoke;
+    box-shadow: 0 0 5px whitesmoke;
+    width: 0;
+    height: 1px;
+    transition: 0.5s;
+    color: #fa6cb9;
+}
+
+footer .developer a:hover::after {
+    cursor: pointer;
+    width: 100%;
+    background: whitesmoke;
+    text-shadow: 0 0 15px whitesmoke;
+    box-shadow: 0 0 15px whitesmoke;
+}
+
+footer .developer a:hover {
+    color: #fa6cb9;
+    transition: 0.5s;
+}
