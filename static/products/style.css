@@ -438,6 +438,100 @@ nav {
     transition: .75s;
 }
 
+.wrap {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+h1 {
+    font-weight: 800;
+    letter-spacing: .5px;
+    margin: 0 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    position: relative;
+    border-radius: 18px;
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .1);
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+}
+
+.img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    border-radius: 12px;
+    object-fit: cover;
+    filter: saturate(1.1) contrast(1.05);
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 10px 0 6px;
+}
+
+.desc {
+    opacity: .9;
+    line-height: 1.5;
+    font-size: .95rem;
+    min-height: 64px;
+}
+
+.price {
+    margin: 12px 0 10px;
+    font-weight: 800;
+    letter-spacing: .3px;
+}
+
+.cta {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    color: #061018;
+    text-decoration: none;
+    font-weight: 800;
+    border: none;
+}
+
+.badge {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    background: radial-gradient(ellipse at 30% 30%, #fff8, transparent), var(--accent);
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 800;
+    border: 1px solid #fff4;
+}
+
+.stock {
+    font-size: .9rem;
+    margin-top: 6px;
+    color: #cfeee6;
+}
+
+.stock.out {
+    color: #ff9ea8;
+}
+
+@media (max-width:420px) {
+    .grid {
+        grid-template-columns: 1fr
+    }
+}
+
 .heading form button:hover {
     box-shadow: 0 0 15px white;
     cursor: pointer;
@@ -529,16 +623,40 @@ nav {
 }
 
 .connection .connection_form form input {
+    width: 100%;
+}
+
+.connection .connection_form form input {
     padding: 15px;
     color: rgba(245, 245, 245, 0.212);
     border: none;
     border-radius: 10px;
+    width: 300px;
     outline: none;
     box-shadow: 0 0 5px white inset;
     font-size: 18px;
     background-clip: text;
     background: rgba(255, 255, 255, 0.371);
     border-radius: 10px;
+}
+
+input,
+textarea {
+    padding: 15px;
+    color: rgba(245, 245, 245, 0.212);
+    border: none;
+    border-radius: 10px;
+    width: 300px;
+    outline: none;
+    box-shadow: 0 0 5px white inset;
+    font-size: 18px;
+    background-clip: text;
+    background: rgba(255, 255, 255, 0.371);
+    border-radius: 10px;
+}
+
+.connection .connection_form form .subject {
+    width: 90%;
 }
 
 .connection .connection_form form input::placeholder {
@@ -569,6 +687,170 @@ nav {
     color: white;
     transform: translate(0, -15px);
     transition: .5s;
+}
+
+.cart-wrapper {
+    max-width: 800px;
+    margin: 30px auto;
+    background: linear-gradient(120deg, var(--bg-1), var(--bg-2));
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+}
+
+.cart-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 18px;
+}
+
+
+/* table */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead th {
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, rgba(138, 43, 226, .35), rgba(255, 105, 180, .25));
+    text-align: left;
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+}
+
+.table tbody td {
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    vertical-align: middle;
+}
+
+.table tfoot th {
+    padding: 12px;
+    text-align: right;
+    font-weight: 700;
+    color: #fff;
+}
+
+
+/* product cell */
+
+.prod-cell {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.prod-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+}
+
+.prod-name {
+    font-weight: 600;
+}
+
+.prod-available {
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+
+/* inputs & buttons like auth pages */
+
+input[type="number"].qty {
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .18);
+    color: #fff;
+    border-radius: 10px;
+    padding: 8px 10px;
+    width: 100px;
+    outline: none;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary), var(--primary-2));
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(138, 43, 226, .35);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 10px 24px rgba(138, 43, 226, .45);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, .3);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, .08);
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+@media (max-width: 768px) {
+    .prod-cell {
+        align-items: flex-start
+    }
+    .table thead {
+        display: none;
+    }
+    .table,
+    .table tbody,
+    .table tr,
+    .table td {
+        display: block;
+        width: 100%;
+    }
+    .table tr {
+        margin-bottom: 14px;
+        background: rgba(255, 255, 255, .03);
+        border-radius: 12px;
+    }
+    .table td {
+        border: none;
+        padding: 10px 12px;
+    }
+    .totals {
+        margin-top: 10px;
+    }
 }
 
 footer {

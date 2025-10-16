@@ -1,5 +1,8 @@
 {
     "airun.settings": {
         "workspaceId": "a0d1b1d0-648c-49fc-a39b-b3fad7a1e8e6"
+    },
+    "cSpell.enabledFileTypes": {
+        "django-html": false
     }
 }

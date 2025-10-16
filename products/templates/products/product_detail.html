@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ product.name }}</title>
+    <link rel="stylesheet" href="{% static 'products/style.css' %}" />
+  </head>
+  <body>
+    <section class="animation_bg">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </section>
+
+    <nav>
+      <div class="nav">
+        <div class="Logo">
+          <h1>SmartBazaar</h1>
+        </div>
+        <div>
+          <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'product_list' %}">Products</a></li>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="connection" style="flex-direction: column">
+      <div class="connection_form" style="width: 70%; text-align: center">
+        {% if product.image %}
+        <img
+          src="{{ product.image.url }}"
+          alt="{{ product.name }}"
+          style="
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            align-self: center;
+            margin-bottom: 20px;
+          "
+        />
+        {% endif %}
+
+        <h2 style="color: white">{{ product.name }}</h2>
+        <p style="color: rgba(255, 255, 255, 0.7); font-size: 16px">
+          {{ product.short_description }}
+        </p>
+        <p style="color: #30cfe7; font-weight: bold; font-size: 20px">
+          ${{ product.price }}
+        </p>
+        <p style="color: #30cfe7; font-weight: bold; font-size: 20px">
+          {{ product.stock }} in the store now 
+        </p>
+
+<form method="post" action="{% url 'cart_add' product.id %}" class="d-flex gap-2">
+  {% csrf_token %}
+  <input type="number" name="qty" class="form-control" min="1" max="{{ product.stock }}" value="1" style="max-width:120px">
+  <button class="btn btn-success">أضف للسلة</button>
+</form>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

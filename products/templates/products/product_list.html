@@ -1,97 +1,126 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+    <link rel="stylesheet" href="{% static 'products/style.css' %}" />
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Product Page</title>
-        <link rel="stylesheet" href="{% static 'products/style.css' %}">
-        <link rel="stylesheet"
-            href="styles/fontawesome-free-7.0.1-web/fontawesome-free-7.0.1-web/css/all.min.css">
-    </head>
+  <body>
+    <section class="animation_bg">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </section>
 
-    <body>
-        <!-- start section for animation background -->
-        <section class="animation_bg">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+    <nav>
+      <div class="nav">
+        <div class="Logo">
+          <h1>SmartBazaar</h1>
+        </div>
+        <div>
+          <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'product_list' %}">Products</a></li>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li>
+              <a class="btn btn-outline-light" href="{% url 'cart_detail' %}">
+                السلة (<span>{{ cart_count|default:0 }}</span>)
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-        </section>
-        <!-- end section for animation background -->
-        <nav>
-            <div class="nav">
-                <div class="Logo">
-                    <svg class="logo-icon" viewBox="0 0 100 100"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <lineargradient id="logoGradient" x1="0%" y1="0%"
-                                x2="100%" y2="100%">
-                                <stop offset="0%"
-                                    style="stop-color:#e0a3ff"></stop>
-                                <stop offset="50%"
-                                    style="stop-color:#ff69b4"></stop>
-                                <stop offset="100%"
-                                    style="stop-color:#9370db"></stop>
-                            </lineargradient>
-                        </defs>
-                        <circle cx="50" cy="30" r="8" fill="url(#logoGradient)"
-                            opacity="0.8">
-                            <animate attributeName="opacity" values="0.8;1;0.8"
-                                dur="2s" repeatCount="indefinite"></animate>
-                        </circle>
-                        <circle cx="30" cy="60" r="6" fill="url(#logoGradient)"
-                            opacity="0.6">
-                            <animate attributeName="opacity" values="0.6;1;0.6"
-                                dur="2.5s" repeatCount="indefinite"></animate>
-                        </circle>
-                        <circle cx="70" cy="65" r="7" fill="url(#logoGradient)"
-                            opacity="0.7">
-                            <animate attributeName="opacity" values="0.7;1;0.7"
-                                dur="1.8s" repeatCount="indefinite"></animate>
-                        </circle>
-                        <line x1="50" y1="30" x2="30" y2="60"
-                            stroke="url(#logoGradient)" stroke-width="2"
-                            opacity="0.6">
-                            <animate attributeName="opacity" values="0.6;1;0.6"
-                                dur="3s" repeatCount="indefinite"></animate>
-                        </line>
-                        <line x1="50" y1="30" x2="70" y2="65"
-                            stroke="url(#logoGradient)" stroke-width="2"
-                            opacity="0.6">
-                            <animate attributeName="opacity" values="0.6;1;0.6"
-                                dur="2.2s" repeatCount="indefinite"></animate>
-                        </line>
-                        <line x1="30" y1="60" x2="70" y2="65"
-                            stroke="url(#logoGradient)" stroke-width="2"
-                            opacity="0.6">
-                            <animate attributeName="opacity" values="0.6;1;0.6"
-                                dur="2.8s" repeatCount="indefinite"></animate>
-                        </line>
-                    </svg>
-                    <h1>SmartBazaar</h1>
-                </div>
+    <section class="connection" style="flex-direction: column">
+      <div class="connection_form" style="width: 80%">
+        <h2>Available Products</h2>
 
-                <div>
-                    <ul>
-                        <li><a target="_blank"
-                                href="{% url 'home' %}">Home</a></li>
-                        <li><a target="_blank"
-                                href="{% url 'product_list'%}">Products</a></li>
-                        <li><a href>About</a></li>
-                        <li><a href>Contact</a></li>
-                        <li><a href="{% url 'login'%}">Login</a></li>
-                    </ul>
-
-                    <span class="menu">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                    </span>
-                </div>
+        {% if products %}
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+          "
+        >
+          {% for product in products %}
+          <div
+            style="
+              background: rgba(255, 255, 255, 0.08);
+              padding: 20px;
+              border-radius: 15px;
+              box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+              text-align: center;
+            "
+          >
+            {% if product.image %}
+            <img
+              src="{{ product.image.url }}"
+              alt="{{ product.name }}"
+              style="
+                width: 50%;
+                height: 350px;
+                object-fit: cover;
+                border-radius: 10px;
+              "
+            />
+            {% else %}
+            <div
+              style="
+                width: 100%;
+                height: 200px;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+              "
+            >
+              No Image
             </div>
-        </nav>
-
-    </body>
-
+            {% endif %}
+            <h3 style="color: white; margin-top: 15px">{{ product.name }}</h3>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 14px">
+              {{ product.short_description }}
+            </p>
+            <p style="color: #30cfe7; font-weight: bold; margin: 10px 0">
+              {{ product.price }} $
+            </p>
+            <p style="color: #30cfe7b4; font-weight: bold; margin: 10px 0">
+              {{ product.stock }} in store
+            </p>
+            <form
+              method="post"
+              action="{% url 'cart_add' product.id %}"
+              class="d-inline"
+            >
+              {% csrf_token %}
+              <input type="hidden" name="qty" value="1" />
+              <button class="btn btn-sm btn-success">أضف للسلة</button>
+            </form>
+          </div>
+          {% empty %}
+          <p style="color: white">No products available.</p>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p style="color: white">No products available.</p>
+        {% endif %}
+      </div>
+    </section>
+  </body>
 </html>
