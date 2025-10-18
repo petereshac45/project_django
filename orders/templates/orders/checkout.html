@@ -9,6 +9,488 @@
         <link rel="stylesheet" href="{% static 'products/style.css' %}" />
         <link rel="stylesheet"
             href="styles/fontawesome-free-7.0.1-web/fontawesome-free-7.0.1-web/css/all.min.css" />
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --main-gradiant: radial-gradient(circle at 15% 85%, rgba(75, 0, 130, 0.7) 0%, transparent 50%), radial-gradient(circle at 85% 15%, rgba(139, 37, 99, 0.8) 0%, transparent 50%), linear-gradient(135deg, #0a0a0a 0%, #2d1b3d 50%, #000000 100%);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --accent: #30cfe7;
+            --gradient: linear-gradient(180deg, #30cfe7, #c8379b);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--main-gradiant);
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* background animation */
+        
+        .animation_bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100%;
+            z-index: -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .animation_bg div {
+            width: 120px;
+            height: 120px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            animation: float 10s linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0.1;
+            }
+        }
+        /* welcome section */
+        
+        .welcome_section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .welcome_box {
+            text-align: center;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            padding: 60px;
+            border-radius: 25px;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .welcome_title {
+            font-size: clamp(32px, 6vw, 64px);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        
+        .welcome_sub {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        /* glowing button */
+        
+        .btn-glow {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(48, 207, 231, 0.4);
+            transition: 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-glow::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-glow:hover::after {
+            left: 100%;
+        }
+        
+        .btn-glow:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(48, 207, 231, 0.7);
+        }
+        /* responsive */
+        
+        @media (max-width: 600px) {
+            .welcome_box {
+                width: 90%;
+                padding: 40px;
+            }
+            .welcome_sub {
+                font-size: 16px;
+            }
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+         ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: var(--main-gradiant);
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff0099, #00ffff);
+            border-radius: 5px;
+        }
+        
+        body {
+            width: 100%;
+            font-family: system-ui, "Segoe UI", Roboto, "Noto Naskh Arabic", sans-serif;
+        }
+        
+        a {
+            text-decoration: none;
+            color: transparent;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+         :root {
+            --main-gradiant: radial-gradient(circle at 15% 85%, rgba(75, 0, 130, 0.7) 0%, transparent 50%), radial-gradient(circle at 85% 15%, rgba(139, 37, 99, 0.8) 0%, transparent 50%), radial-gradient(circle at 45% 60%, rgba(128, 0, 128, 0.6) 0%, transparent 50%), radial-gradient(circle at 70% 40%, rgba(34, 139, 34, 0.4) 0%, transparent 50%), linear-gradient(135deg, #0a0a0a 0%, #2d1b3d 50%, #000000 100%);
+            --card-bg: rgba(224, 163, 255, 0.08);
+            --secondary-gradiant: linear-gradient(180deg, #30cfe7, #c8379b);
+        }
+        /* start section background animation */
+        
+        .animation_bg {
+            height: 100vh;
+            position: fixed;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: clip;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: end;
+            background: var(--main-gradiant);
+        }
+        
+        @keyframes first {
+            0% {
+                transform: translateY(0) rotate(0) skew(0) matrix3d(0);
+                opacity: .75;
+                background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+            }
+            100% {
+                opacity: 1;
+                background: linear-gradient(-45deg, rgba(255, 105, 180, 0.1), transparent);
+                transform: translateY(-80vh) rotate(360deg) skew(1deg);
+            }
+        }
+        
+        .animation_bg>div:nth-of-type(1) {
+            width: 100px;
+            height: 100px;
+            top: 60%;
+            left: 5%;
+            border: 1px solid #0f37371b;
+            animation: first 8s linear infinite;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(2) {
+            width: 100px;
+            height: 100px;
+            top: 65%;
+            left: 15%;
+            border: 1px solid #0f37371b;
+            animation: first 6s linear infinite;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+            border-radius: 50%;
+        }
+        
+        .animation_bg>div:nth-of-type(3) {
+            width: 100px;
+            top: 85%;
+            left: 25%;
+            height: 80px;
+            animation: first 8s linear infinite;
+            border: 1px solid white;
+            border-bottom: 1px solid #0f37371b;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        
+        .animation_bg>div:nth-of-type(4) {
+            width: 50px;
+            height: 100px;
+            top: 55%;
+            left: 35%;
+            animation: first 7s linear infinite;
+            border: 1px solid #0f37371b;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(5) {
+            width: 100px;
+            position: absolute;
+            height: 100px;
+            top: 70%;
+            left: 45%;
+            border: 1px solid #0f37371b;
+            animation: first 6s linear infinite;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(6) {
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 55%;
+            animation: first 8s linear infinite;
+            border: 1px solid #0f37371b;
+            clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(7) {
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 65%;
+            border: 1px solid #0f37371b;
+            animation: first 7s linear infinite;
+            clip-path: ellipse(25% 40% at 50% 50%);
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(8) {
+            width: 100px;
+            height: 100px;
+            top: 65%;
+            left: 70%;
+            animation: first 7s linear infinite;
+            border: 1px solid #0f37371b;
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(9) {
+            width: 100px;
+            height: 100px;
+            top: 55%;
+            left: 77%;
+            animation: first 6s linear infinite;
+            border: 1px solid #0f37371b;
+            clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(10) {
+            width: 220px;
+            height: 100px;
+            top: 75%;
+            left: 75%;
+            animation: first 7s linear infinite;
+            border: 1px solid #0f37371b;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        /* end  section background animation */
+        /* start nav */
+        /* start nav */
+        
+        nav {
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            /* ✅ خليه ثابت */
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            /* ✅ فوق كل حاجة */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+        }
+        
+        .nav {
+            width: 95%;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 20px;
+            background: transparent;
+        }
+        
+        body {
+            padding-top: 100px;
+            /* ✅ المسافة تعوض ارتفاع الـ nav */
+        }
+        
+        .Logo {
+            display: flex;
+            transition: all .7s ease;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        
+        .Logo .logo-icon {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .Logo h1 {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: clamp(14px, 2vw, 26px);
+            background: radial-gradient(rgba(139, 37, 99, 0.8), rgba(255, 255, 255, 0.5));
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px #e0a3ff;
+            animation: second 2s linear infinite;
+        }
+        
+        @keyframes second {
+            0% {
+                text-shadow: 0 0 5px #e0a3ff;
+            }
+            100% {
+                text-shadow: 0 0 15px #e0a3ff;
+            }
+        }
+        
+        .Logo:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        
+        .nav>div:nth-of-type(2) {}
+        
+        .nav>div:nth-of-type(2) ul {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            gap: 20px;
+        }
+        
+        .nav div:nth-of-type(2) ul a {
+            color: white;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .nav div:nth-of-type(2) ul a:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            background: linear-gradient(45deg, rgb(250, 108, 185), rgb(172, 126, 228)) 0% 0% / 100%;
+            ;
+            height: 0;
+            width: 100%;
+            z-index: -2;
+            transition: .7s;
+            transform: translateY(-50%);
+            border-radius: 10px;
+        }
+        
+        .nav div:nth-of-type(2) ul a:hover:after {
+            height: 50%;
+        }
+        
+        .hr {
+            width: 90%;
+            display: flex;
+            margin: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav .menu i:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            background: linear-gradient(45deg, rgb(250, 108, 185), rgb(172, 126, 228)) 0% 0% / 100%;
+            ;
+            height: 0;
+            width: 100%;
+            z-index: -2;
+            transition: .4s;
+            transform: translateY(-50%);
+            border-radius: 10px;
+        }
+        
+        .nav .menu i:hover:after {
+            height: 40px;
+            width: 35px;
+        }
+        
+        .menu {
+            display: none;
+            z-index: 1;
+            color: white;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .menu i {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
     </head>
 
     <body>
@@ -135,13 +617,14 @@
                         style="background: linear-gradient(120deg, rgba(255,255,255,.06), rgba(255,255,255,.12)); border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:18px">
                         <div class="cart-title"
                             style="font-size:20px; margin-bottom:10px">Order
-                            Summary</div>
+                            Summary
+                        </div>
                         <div>
                             {% for item in cart_items %}
                             <div class="d-flex justify-content-between"
                                 style="display:flex; justify-content:space-between; margin-bottom:8px">
-                                <div>{{ item.product.name }} × {{ item.qty
-                                    }}</div>
+                                <div>{{ item.product.name }} × {{ item.qty }}
+                                </div>
                                 <div>${{ item.line_total }}</div>
                             </div>
                             {% endfor %}
