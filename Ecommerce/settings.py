@@ -138,6 +138,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 LOGIN_REDIRECT_URL = '/accounts/profile/'
 LOGOUT_REDIRECT_URL = '/'    
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = '/media/'
+
