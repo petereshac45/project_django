@@ -560,8 +560,8 @@
                     <ul>
                         <li><a target="_blank"
                                 href="{% url 'home' %}">Home</a></li>
-                        <li><a target="_blank"
-                                href="{% url 'products:product_list' %}">Products</a></li>
+                        <li><a href="{% url 'products:product_list' %}">
+                                Products</a></li>
                         <li><a href="{% url 'about'%}">About</a></li>
                         <li><a href="{% url 'contact'%}">Contact</a></li>
                         {% if user.is_authenticated %}
