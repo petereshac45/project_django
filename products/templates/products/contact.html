@@ -5,10 +5,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Welcome — SmartBazaar</title>
-        <link rel="stylesheet" href="{% static 'products/welcome.css' %}" />
+        <title>Contact — SmartBazaar</title>
+        <link rel="stylesheet" href="{% static 'products/contact.css' %}" />
         <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
         * {
             margin: 0;
             padding: 0;
@@ -18,142 +18,220 @@
          :root {
             --main-gradiant: radial-gradient(circle at 15% 85%, rgba(75, 0, 130, 0.7) 0%, transparent 50%), radial-gradient(circle at 85% 15%, rgba(139, 37, 99, 0.8) 0%, transparent 50%), linear-gradient(135deg, #0a0a0a 0%, #2d1b3d 50%, #000000 100%);
             --card-bg: rgba(255, 255, 255, 0.08);
-            --accent: #30cfe7;
-            --gradient: linear-gradient(180deg, #30cfe7, #c8379b);
+            --secondary-gradiant: linear-gradient(180deg, #30cfe7, #c8379b);
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--main-gradiant);
+            font-family: system-ui, sans-serif;
             color: white;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--main-gradiant);
+            overflow-x: hidden;
         }
         /* background animation */
         
         .animation_bg {
             position: fixed;
-            top: 0;
-            left: 0;
             height: 100vh;
             width: 100%;
             z-index: -1;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
+            overflow: hidden;
         }
         
         .animation_bg div {
-            width: 120px;
-            height: 120px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             animation: float 10s linear infinite;
         }
         
         @keyframes float {
             0% {
                 transform: translateY(0) rotate(0deg);
-                opacity: 0.6;
+                opacity: 0.8;
             }
             100% {
                 transform: translateY(-100vh) rotate(360deg);
-                opacity: 0.1;
+                opacity: 0.3;
             }
         }
-        /* welcome section */
+        /* nav */
         
-        .welcome_section {
+        nav {
+            width: 100%;
+            height: 80px;
+            position: sticky;
+            top: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            z-index: 999;
         }
         
-        .welcome_box {
-            text-align: center;
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            padding: 60px;
-            border-radius: 25px;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
-            animation: fadeIn 1.5s ease;
+        .nav {
+            width: 95%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 25px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
         
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .welcome_title {
-            font-size: clamp(32px, 6vw, 64px);
-            background: var(--gradient);
+        .nav h1 {
+            font-size: 26px;
+            background: var(--secondary-gradiant);
+            background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            text-shadow: 0 0 15px #e0a3ff;
         }
         
-        .welcome_sub {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 18px;
-            margin-bottom: 40px;
-            line-height: 1.6;
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
         }
-        /* glowing button */
         
-        .btn-glow {
-            display: inline-block;
-            background: var(--gradient);
+        .nav ul li a {
             color: white;
             text-decoration: none;
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            box-shadow: 0 0 20px rgba(48, 207, 231, 0.4);
-            transition: 0.3s ease-in-out;
-            position: relative;
-            overflow: hidden;
+            transition: 0.3s;
         }
         
-        .btn-glow::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-            transition: 0.5s;
+        .nav ul li a:hover {
+            color: #30cfe7;
+        }
+        /* contact section */
+        
+        .contact_section {
+            padding: 120px 20px 60px;
+            text-align: center;
         }
         
-        .btn-glow:hover::after {
-            left: 100%;
+        .contact_section h2 {
+            font-size: clamp(24px, 4vw, 50px);
+            background: var(--secondary-gradiant);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
         }
         
-        .btn-glow:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(48, 207, 231, 0.7);
+        .contact_section p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+        }
+        
+        .contact_container {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .contact_info {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            flex: 1 1 300px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact_info h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .contact_info p {
+            margin: 10px 0;
+            font-size: 15px;
+        }
+        
+        .contact_info i {
+            color: #30cfe7;
+            margin-right: 10px;
+        }
+        
+        .social_icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social_icons i {
+            font-size: 22px;
+            color: white;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .social_icons i:hover {
+            color: #30cfe7;
+            transform: scale(1.2);
+        }
+        /* contact form */
+        
+        .contact_form {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            flex: 1 1 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact_form input,
+        .contact_form textarea {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            padding: 15px;
+            font-size: 15px;
+            outline: none;
+            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact_form input::placeholder,
+        .contact_form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .contact_form button {
+            background: var(--secondary-gradiant);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        
+        .contact_form button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px #30cfe7;
         }
         /* responsive */
         
-        @media (max-width: 600px) {
-            .welcome_box {
-                width: 90%;
-                padding: 40px;
+        @media (max-width: 768px) {
+            .contact_container {
+                width: 95%;
+                flex-direction: column;
             }
-            .welcome_sub {
-                font-size: 16px;
+            .nav ul {
+                gap: 10px;
+            }
+            .nav h1 {
+                font-size: 22px;
             }
         }
         
@@ -164,15 +242,15 @@
             scroll-behavior: smooth;
         }
         
-         ::-webkit-scrollbar {
+        ::-webkit-scrollbar {
             width: 10px;
         }
         
-         ::-webkit-scrollbar-track {
+        ::-webkit-scrollbar-track {
             background: var(--main-gradiant);
         }
         
-         ::-webkit-scrollbar-thumb {
+        ::-webkit-scrollbar-thumb {
             background: linear-gradient(180deg, #ff0099, #00ffff);
             border-radius: 5px;
         }
@@ -191,7 +269,7 @@
             list-style: none;
         }
         
-         :root {
+        :root {
             --main-gradiant: radial-gradient(circle at 15% 85%, rgba(75, 0, 130, 0.7) 0%, transparent 50%), radial-gradient(circle at 85% 15%, rgba(139, 37, 99, 0.8) 0%, transparent 50%), radial-gradient(circle at 45% 60%, rgba(128, 0, 128, 0.6) 0%, transparent 50%), radial-gradient(circle at 70% 40%, rgba(34, 139, 34, 0.4) 0%, transparent 50%), linear-gradient(135deg, #0a0a0a 0%, #2d1b3d 50%, #000000 100%);
             --card-bg: rgba(224, 163, 255, 0.08);
             --secondary-gradiant: linear-gradient(180deg, #30cfe7, #c8379b);
@@ -337,38 +415,30 @@
         }
         /* end  section background animation */
         /* start nav */
-        /* start nav */
         
         nav {
             width: 100%;
-            height: 80px;
-            position: fixed;
-            /* ✅ خليه ثابت */
-            top: 0;
-            left: 0;
-            z-index: 10000;
-            /* ✅ فوق كل حاجة */
+            height: 100px;
             display: flex;
+            z-index: 1000;
+            flex-direction: row;
+            position: sticky;
+            top: 20px;
             justify-content: center;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
         }
         
         .nav {
             width: 95%;
+            border: 1px solid transparent;
+            border-radius: 20px;
             height: 70px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            border-radius: 20px;
-            background: transparent;
-        }
-        
-        body {
-            padding-top: 100px;
-            /* ✅ المسافة تعوض ارتفاع الـ nav */
+            flex-direction: row;
+            z-index: 10000;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 0px 5px rgba(245, 245, 245, 0.3);
+            backdrop-filter: blur(5px);
         }
         
         .Logo {
@@ -488,21 +558,20 @@
             position: relative;
             z-index: 1;
         }
+        /*--end nav */
     </style>
     </head>
 
     <body>
-        <!-- background animation -->
+        <!-- start section for animation background -->
         <section class="animation_bg">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+
         </section>
+        <!-- end section for animation background -->
         <nav>
             <div class="nav">
                 <div class="Logo">
@@ -563,15 +632,10 @@
                         <li><a target="_blank"
                                 href="{% url 'product_list'%}">Products</a></li>
                         <li><a href="{% url 'about'%}">About</a></li>
-                        <li><a href="{% url 'contact'%}">Contact</a></li>
+                        <li><a href>Contact</a></li>
                         {% if user.is_authenticated %}
                         <li> <a href="{% url 'profile' %}">Profile</a></li>
-                        <li>
-                            <a class="btn btn-outline-light"
-                                href="{% url 'cart_detail' %}">
-                                basket (<span>{{ cart_count|default:0 }}</span>)
-                            </a>
-                        </li>
+
                         {% else %}
                         <li> <a href="{% url 'login' %}">Login</a></li>
                         <li><a href="{% url 'signup' %}">Sign Up</a></li>
@@ -584,16 +648,40 @@
                 </div>
             </div>
         </nav>
-        <!-- Welcome Section -->
-        <section class="welcome_section">
-            <div class="welcome_box">
-                <h1 class="welcome_title">Welcome<br>to your world 🌌</h1>
-                <p class="welcome_sub">
-                    Take a deep breath... relax... and step into a place made
-                    for you.
-                </p>
-                <a href="{% url 'product_list' %}" class="btn-glow">Explore
-                    Products</a>
+
+        <!-- contact section -->
+        <section class="contact_section">
+            <h2>Contact Us</h2>
+            <p>We’d love to hear from you! Whether you have a question,
+                feedback, or just want to say hello.</p>
+
+            <div class="contact_container">
+                <div class="contact_info">
+                    <h3>Our Details</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Cairo, Egypt</p>
+                    <p><i class="fa-solid fa-phone"></i> +20 100 234 5678</p>
+                    <p><i class="fa-solid fa-envelope"></i>
+                        support@smartbazaar.com
+                    </p>
+
+                    <div class="social_icons">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+
+                <form method="post" class="contact_form">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Your Name"
+                        required />
+                    <input type="email" name="email" placeholder="Your Email"
+                        required />
+                    <textarea name="message" rows="5" placeholder="Your Message"
+                        required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
             </div>
         </section>
     </body>

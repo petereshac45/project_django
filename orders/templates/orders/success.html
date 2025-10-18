@@ -2,124 +2,153 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order Success</title>
-    <link rel="stylesheet" href="{% static 'products/style.css' %}" />
-    <link rel="stylesheet" href="styles/fontawesome-free-7.0.1-web/fontawesome-free-7.0.1-web/css/all.min.css" />
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Order Success</title>
+        <link rel="stylesheet" href="{% static 'products/style.css' %}" />
+        <link rel="stylesheet"
+            href="styles/fontawesome-free-7.0.1-web/fontawesome-free-7.0.1-web/css/all.min.css" />
+    </head>
 
-<body>
-    <section class="animation_bg">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </section>
+    <body>
+        <section class="animation_bg">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </section>
 
-    <nav>
-        <div class="nav">
-            <div class="Logo">
-                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <lineargradient id="logoGradient" x1="0%" y1="0%" x2="100%"
-                y2="100%">
-                <stop offset="0%" style="stop-color:#e0a3ff"></stop>
-                <stop offset="50%" style="stop-color:#ff69b4"></stop>
-                <stop offset="100%" style="stop-color:#9370db"></stop>
-              </lineargradient>
-            </defs>
-            <circle cx="50" cy="30" r="8" fill="url(#logoGradient)"
-              opacity="0.8">
-              <animate attributeName="opacity" values="0.8;1;0.8" dur="2s"
-                repeatCount="indefinite"></animate>
-            </circle>
-            <circle cx="30" cy="60" r="6" fill="url(#logoGradient)"
-              opacity="0.6">
-              <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s"
-                repeatCount="indefinite"></animate>
-            </circle>
-            <circle cx="70" cy="65" r="7" fill="url(#logoGradient)"
-              opacity="0.7">
-              <animate attributeName="opacity" values="0.7;1;0.7" dur="1.8s"
-                repeatCount="indefinite"></animate>
-            </circle>
-            <line x1="50" y1="30" x2="30" y2="60" stroke="url(#logoGradient)"
-              stroke-width="2" opacity="0.6">
-              <animate attributeName="opacity" values="0.6;1;0.6" dur="3s"
-                repeatCount="indefinite"></animate>
-            </line>
-            <line x1="50" y1="30" x2="70" y2="65" stroke="url(#logoGradient)"
-              stroke-width="2" opacity="0.6">
-              <animate attributeName="opacity" values="0.6;1;0.6" dur="2.2s"
-                repeatCount="indefinite"></animate>
-            </line>
-            <line x1="30" y1="60" x2="70" y2="65" stroke="url(#logoGradient)"
-              stroke-width="2" opacity="0.6">
-              <animate attributeName="opacity" values="0.6;1;0.6" dur="2.8s"
-                repeatCount="indefinite"></animate>
-            </line>
-          </svg>
-                <h1>SmartBazaar</h1>
-            </div>
-
-            <div>
-                <ul>
-                    <li><a href="{% url 'home' %}" target="_blank">Home</a></li>
-                    <li><a href="{% url 'product_list' %}" target="_blank">Products</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
-                    {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    {% endif %}
-                </ul>
-                <span class="menu"><i class="fa-solid fa-bars-staggered"></i></span>
-            </div>
-        </div>
-    </nav>
-
-    <div class="card" style="background: linear-gradient(120deg, rgba(255,255,255,.06), rgba(255,255,255,.12)); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:28px; text-align:center;">
-        <i class="fa-solid fa-circle-check" style="font-size:60px; margin-bottom:16px;"></i>
-        <h2 style="font-size:26px; font-weight:700; margin-bottom:6px;">Thank you for your purchase!</h2>
-        <p style="opacity:.9; margin-bottom:14px;">Your order has been placed successfully.
-        </p>
-        <p style="color:#cfe1ff; font-size:15px; margin-bottom:18px;">Order ID:
-            <strong>#{{ order.id }}</strong></p>
-
-        <div class="cart-wrapper" style="max-width:620px; margin:0 auto; padding:16px">
-            <div class="cart-title" style="font-size:18px; margin-bottom:8px;">Order Items
-            </div>
-            <div>
-                {% for it in order.items.all %}
-                <div style="display:flex; justify-content:space-between; gap:10px; padding:10px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; background:rgba(255,255,255,.05); margin-bottom:8px;">
-                    <div style="text-align:left">
-                        <div style="font-weight:600">{{ it.product.name }}</div>
-                        <div style="opacity:.8; font-size:.95rem">Qty: {{ it.quantity }} @ ${{ it.unit_price }}</div>
-                    </div>
-                    <div style="font-weight:700">${{ it.line_total }}</div>
+        <nav>
+            <div class="nav">
+                <div class="Logo">
+                    <svg class="logo-icon" viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <lineargradient id="logoGradient" x1="0%" y1="0%"
+                                x2="100%" y2="100%">
+                                <stop offset="0%"
+                                    style="stop-color:#e0a3ff"></stop>
+                                <stop offset="50%"
+                                    style="stop-color:#ff69b4"></stop>
+                                <stop offset="100%"
+                                    style="stop-color:#9370db"></stop>
+                            </lineargradient>
+                        </defs>
+                        <circle cx="50" cy="30" r="8" fill="url(#logoGradient)"
+                            opacity="0.8">
+                            <animate attributeName="opacity" values="0.8;1;0.8"
+                                dur="2s" repeatCount="indefinite"></animate>
+                        </circle>
+                        <circle cx="30" cy="60" r="6" fill="url(#logoGradient)"
+                            opacity="0.6">
+                            <animate attributeName="opacity" values="0.6;1;0.6"
+                                dur="2.5s" repeatCount="indefinite"></animate>
+                        </circle>
+                        <circle cx="70" cy="65" r="7" fill="url(#logoGradient)"
+                            opacity="0.7">
+                            <animate attributeName="opacity" values="0.7;1;0.7"
+                                dur="1.8s" repeatCount="indefinite"></animate>
+                        </circle>
+                        <line x1="50" y1="30" x2="30" y2="60"
+                            stroke="url(#logoGradient)" stroke-width="2"
+                            opacity="0.6">
+                            <animate attributeName="opacity" values="0.6;1;0.6"
+                                dur="3s" repeatCount="indefinite"></animate>
+                        </line>
+                        <line x1="50" y1="30" x2="70" y2="65"
+                            stroke="url(#logoGradient)" stroke-width="2"
+                            opacity="0.6">
+                            <animate attributeName="opacity" values="0.6;1;0.6"
+                                dur="2.2s" repeatCount="indefinite"></animate>
+                        </line>
+                        <line x1="30" y1="60" x2="70" y2="65"
+                            stroke="url(#logoGradient)" stroke-width="2"
+                            opacity="0.6">
+                            <animate attributeName="opacity" values="0.6;1;0.6"
+                                dur="2.8s" repeatCount="indefinite"></animate>
+                        </line>
+                    </svg>
+                    <h1><a href="/">SmartBazaar</a></h1>
                 </div>
-                {% empty %}
-                <p>No items found for this order.</p>
-                {% endfor %}
+
+                <div>
+                    <ul>
+                        <li><a target="_blank"
+                                href="{% url 'home' %}">Home</a></li>
+                        <li><a target="_blank"
+                                href="{% url 'product_list'%}">Products</a></li>
+                        <li><a href="{% url 'about'%}">About</a></li>
+                        <li><a href="{% url 'contact'%}">Contact</a></li>
+                        {% if user.is_authenticated %}
+                        <li> <a href="{% url 'profile' %}">Profile</a></li>
+
+                        {% else %}
+                        <li> <a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                        {% endif %}
+                    </ul>
+
+                    <span class="menu">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </span>
+                </div>
+            </div>
+        </nav>
+
+        <div class="card"
+            style="background: linear-gradient(120deg, rgba(255,255,255,.06), rgba(255,255,255,.12)); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:28px; text-align:center;">
+            <i class="fa-solid fa-circle-check"
+                style="font-size:60px; margin-bottom:16px;"></i>
+            <h2
+                style="font-size:26px; font-weight:700; margin-bottom:6px;">Thank
+                you for your purchase!</h2>
+            <p style="opacity:.9; margin-bottom:14px;">Your order has been
+                placed successfully.
+            </p>
+            <p style="color:#cfe1ff; font-size:15px; margin-bottom:18px;">Order
+                ID:
+                <strong>#{{ order.id }}</strong></p>
+
+            <div class="cart-wrapper"
+                style="max-width:620px; margin:0 auto; padding:16px">
+                <div class="cart-title"
+                    style="font-size:18px; margin-bottom:8px;">Order Items
+                </div>
+                <div>
+                    {% for it in order.items.all %}
+                    <div
+                        style="display:flex; justify-content:space-between; gap:10px; padding:10px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; background:rgba(255,255,255,.05); margin-bottom:8px;">
+                        <div style="text-align:left">
+                            <div style="font-weight:600">{{ it.product.name
+                                }}</div>
+                            <div style="opacity:.8; font-size:.95rem">Qty: {{
+                                it.quantity }} @ ${{ it.unit_price }}</div>
+                        </div>
+                        <div style="font-weight:700">${{ it.line_total }}</div>
+                    </div>
+                    {% empty %}
+                    <p>No items found for this order.</p>
+                    {% endfor %}
+                </div>
+
+                <div
+                    style="display:flex; justify-content:space-between; font-weight:700; margin-top:10px;">
+                    <span>Total</span>
+                    <span>${{ order.total_amount }}</span>
+                </div>
             </div>
 
-            <div style="display:flex; justify-content:space-between; font-weight:700; margin-top:10px;">
-                <span>Total</span>
-                <span>${{ order.total_amount }}</span>
+            <div
+                style="margin-top:20px; display:flex; gap:14px; justify-content:center;">
+                <a href="{% url 'product_list' %}"
+                    class="btn btn-primary">Continue
+                    Shopping</a>
+                <a href="{% url 'cart_detail' %}" class="btn btn-outline">View
+                    Cart</a>
             </div>
         </div>
 
-        <div style="margin-top:20px; display:flex; gap:14px; justify-content:center;">
-            <a href="{% url 'product_list' %}" class="btn btn-primary">Continue
-          Shopping</a>
-            <a href="{% url 'cart_detail' %}" class="btn btn-outline">View Cart</a>
-        </div>
-    </div>
-
-</body>
+    </body>
 
 </html>

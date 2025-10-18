@@ -1,0 +1,1007 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>About — SmartBazaar</title>
+        <link rel="stylesheet" href="styles/about.css" />
+        <link rel="stylesheet"
+            href="styles/fontawesome-free-7.0.1-web/fontawesome-free-7.0.1-web/css/all.min.css" />
+        <style>
+        /* ====== Base ====== */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth
+        }
+        
+         :root {
+            --main-gradiant: radial-gradient(circle at 15% 85%, rgba(75, 0, 130, .7) 0%, transparent 50%), radial-gradient(circle at 85% 15%, rgba(139, 37, 99, .8) 0%, transparent 50%), radial-gradient(circle at 45% 60%, rgba(128, 0, 128, .6) 0%, transparent 50%), radial-gradient(circle at 70% 40%, rgba(34, 139, 34, .4) 0%, transparent 50%), linear-gradient(135deg, #0a0a0a 0%, #2d1b3d 50%, #000 100%);
+            --card-bg: rgba(224, 163, 255, .08);
+            --secondary-gradiant: linear-gradient(180deg, #30cfe7, #c8379b);
+            --text: #fff;
+        }
+        
+        html,
+        body {
+            height: 100%
+        }
+        
+        body {
+            font-family: system-ui, "Segoe UI", Roboto, "Noto Naskh Arabic", sans-serif;
+            color: var(--text);
+            background: #000
+        }
+        
+        a {
+            text-decoration: none;
+            color: #fff
+        }
+        /* Scrollbar */
+        
+         ::-webkit-scrollbar {
+            width: 10px
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: var(--main-gradiant)
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff0099, #00ffff);
+            border-radius: 5px
+        }
+        /* ====== Animated Background ====== */
+        
+        .animation_bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            background: var(--main-gradiant);
+            overflow-x: clip
+        }
+        
+        @keyframes floatFirst {
+            0% {
+                transform: translateY(0) rotate(0) skew(0);
+                opacity: .75;
+                background: linear-gradient(45deg, rgba(255, 105, 180, .1), transparent)
+            }
+            100% {
+                transform: translateY(-80vh) rotate(360deg) skew(1deg);
+                opacity: 1;
+                background: linear-gradient(-45deg, rgba(255, 105, 180, .1), transparent)
+            }
+        }
+        
+        .animation_bg>div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #0f37371b;
+            animation: floatFirst 8s linear infinite;
+            background: linear-gradient(45deg, rgba(255, 105, 180, .1), transparent)
+        }
+        
+        .animation_bg>div:nth-child(2) {
+            border-radius: 50%;
+            animation-duration: 6s
+        }
+        
+        .animation_bg>div:nth-child(3) {
+            height: 80px;
+            border-bottom: 1px solid #0f37371b;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%)
+        }
+        
+        .animation_bg>div:nth-child(4) {
+            width: 50px;
+            height: 100px;
+            animation-duration: 7s
+        }
+        /* ====== Navbar ====== */
+        
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1000
+        }
+        
+        .nav {
+            width: 95%;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, .1);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 5px rgba(245, 245, 245, .3);
+            padding: 0 12px;
+        }
+        
+        .Logo h1 {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: clamp(20px, 2vw, 26px);
+            background: radial-gradient(rgba(139, 37, 99, .8), rgba(255, 255, 255, .5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px #e0a3ff;
+            animation: logoGlow 2s linear infinite;
+        }
+        
+        @keyframes logoGlow {
+            0% {
+                text-shadow: 0 0 5px #e0a3ff
+            }
+            100% {
+                text-shadow: 0 0 15px #e0a3ff
+            }
+        }
+        
+        .nav__links {
+            display: flex;
+            gap: 18px;
+            align-items: center
+        }
+        
+        .nav__links a {
+            position: relative;
+            padding: 10px 14px;
+            border-radius: 10px
+        }
+        
+        .nav__links a::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 0;
+            background: linear-gradient(45deg, #fa6cb9, #ac7ee4);
+            border-radius: 10px;
+            z-index: -1;
+            transition: .5s
+        }
+        
+        .nav__links a:hover::after,
+        .nav__links a.active::after {
+            height: 100%
+        }
+        
+        .mobile_menu {
+            display: none;
+            color: #fff;
+            font-size: 26px
+        }
+        
+        @media(max-width:850px) {
+            .nav {
+                width: 100%
+            }
+            .nav__links {
+                display: none
+            }
+            .mobile_menu {
+                display: block
+            }
+        }
+        /* ====== Sections ====== */
+        
+        .section {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 0 40px
+        }
+        
+        .hr {
+            display: flex;
+            justify-content: center;
+            margin-top: 110px
+        }
+        
+        .hr hr {
+            width: 40%;
+            border: .5px solid rgba(255, 255, 255, .06);
+            animation: hrAnim 2s ease-in-out infinite alternate
+        }
+        
+        @keyframes hrAnim {
+            0% {
+                width: 40%
+            }
+            100% {
+                width: 80%
+            }
+        }
+        /* Hero */
+        
+        .hero {
+            text-align: center
+        }
+        
+        .eyebrow {
+            color: rgba(245, 245, 245, .4);
+            letter-spacing: 6px;
+            margin-bottom: 8px;
+            font-size: clamp(12px, 3vw, 18px)
+        }
+        
+        .title {
+            font-size: clamp(26px, 6vw, 56px);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            background: var(--secondary-gradiant);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px rgba(224, 163, 255, .35);
+            animation: titlePulse 3s ease-in infinite alternate;
+        }
+        
+        @keyframes titlePulse {
+            0% {
+                text-shadow: 0 0 5px rgba(224, 163, 255, .42)
+            }
+            100% {
+                text-shadow: 0 0 10px rgb(224, 163, 255)
+            }
+        }
+        
+        .subtitle {
+            max-width: 800px;
+            margin: 10px auto 0;
+            color: rgba(255, 255, 255, .85);
+            line-height: 1.8
+        }
+        /* Values (3 per row Flex) */
+        
+        .section__title {
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: clamp(20px, 4.6vw, 34px);
+            background: var(--secondary-gradiant);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: stretch
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(224, 163, 255, .12);
+            backdrop-filter: blur(5px);
+            border-radius: 14px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+            flex: 1 1 calc(33.333% - 20px);
+            max-width: calc(33.333% - 20px);
+            min-width: 260px;
+            transition: .2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-6px);
+            background: rgba(224, 163, 255, .12);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, .25)
+        }
+        
+        .card .icon {
+            font-size: 28px
+        }
+        
+        .card h4 {
+            font-size: clamp(16px, 2vw, 20px)
+        }
+        
+        .card p {
+            color: rgba(255, 255, 255, .85);
+            line-height: 1.7
+        }
+        /* Stats (soft) */
+        
+        .stats {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap
+        }
+        
+        .stat {
+            background: var(--card-bg);
+            border: 1px solid rgba(224, 163, 255, .12);
+            border-radius: 14px;
+            padding: 16px 22px;
+            text-align: center;
+            min-width: 200px
+        }
+        
+        .stat h5 {
+            font-size: clamp(20px, 6vw, 40px);
+            background: var(--secondary-gradiant);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+        
+        .stat p {
+            opacity: .85
+        }
+        /* Story (image + text) */
+        
+        .story {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+        
+        .story__media {
+            flex: 1 1 46%;
+            min-width: 280px
+        }
+        
+        .story__media img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+            filter: brightness(.95)
+        }
+        
+        .story__text {
+            flex: 1 1 46%;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+        
+        .story__text h3 {
+            font-size: clamp(18px, 4vw, 28px)
+        }
+        
+        .story__text p {
+            color: rgba(255, 255, 255, .88);
+            line-height: 1.9
+        }
+        /* Team (3 per row) */
+        
+        .team .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px
+        }
+        /* CTA */
+        
+        .cta {
+            text-align: center
+        }
+        
+        .btn {
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 700
+        }
+        
+        .btn--primary {
+            background: var(--secondary-gradiant);
+            color: #0a0a0a;
+            box-shadow: 0 0 8px rgba(200, 55, 155, .25)
+        }
+        
+        .btn--primary:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05)
+        }
+        /* Footer */
+        
+        footer {
+            width: 100%;
+            background: rgba(0, 0, 0, .5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            color: #fff;
+            padding: 60px 0;
+            margin-top: 40px
+        }
+        
+        footer .links {
+            width: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center
+        }
+        
+        footer .links a {
+            position: relative
+        }
+        
+        footer .links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 1px;
+            width: 0;
+            background: #fff;
+            transition: .3s
+        }
+        
+        footer .links a:hover::after {
+            width: 100%
+        }
+        
+        footer .information p {
+            color: rgba(255, 255, 255, .75)
+        }
+        /* Responsive tweaks */
+        
+        @media(max-width:900px) {
+            .card {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px)
+            }
+        }
+        
+        @media(max-width:560px) {
+            nav {
+                top: 0
+            }
+            .card {
+                flex: 1 1 100%;
+                max-width: 100%
+            }
+            .story__media img {
+                height: 260px
+            }
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+         ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: var(--main-gradiant);
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff0099, #00ffff);
+            border-radius: 5px;
+        }
+        
+        body {
+            width: 100%;
+            font-family: system-ui, "Segoe UI", Roboto, "Noto Naskh Arabic", sans-serif;
+        }
+        
+        a {
+            text-decoration: none;
+            color: transparent;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+         :root {
+            --main-gradiant: radial-gradient(circle at 15% 85%, rgba(75, 0, 130, 0.7) 0%, transparent 50%), radial-gradient(circle at 85% 15%, rgba(139, 37, 99, 0.8) 0%, transparent 50%), radial-gradient(circle at 45% 60%, rgba(128, 0, 128, 0.6) 0%, transparent 50%), radial-gradient(circle at 70% 40%, rgba(34, 139, 34, 0.4) 0%, transparent 50%), linear-gradient(135deg, #0a0a0a 0%, #2d1b3d 50%, #000000 100%);
+            --card-bg: rgba(224, 163, 255, 0.08);
+            --secondary-gradiant: linear-gradient(180deg, #30cfe7, #c8379b);
+        }
+        /* start section background animation */
+        
+        .animation_bg {
+            height: 100vh;
+            position: fixed;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: clip;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: end;
+            background: var(--main-gradiant);
+        }
+        
+        @keyframes first {
+            0% {
+                transform: translateY(0) rotate(0) skew(0) matrix3d(0);
+                opacity: .75;
+                background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+            }
+            100% {
+                opacity: 1;
+                background: linear-gradient(-45deg, rgba(255, 105, 180, 0.1), transparent);
+                transform: translateY(-80vh) rotate(360deg) skew(1deg);
+            }
+        }
+        
+        .animation_bg>div:nth-of-type(1) {
+            width: 100px;
+            height: 100px;
+            top: 60%;
+            left: 5%;
+            border: 1px solid #0f37371b;
+            animation: first 8s linear infinite;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(2) {
+            width: 100px;
+            height: 100px;
+            top: 65%;
+            left: 15%;
+            border: 1px solid #0f37371b;
+            animation: first 6s linear infinite;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+            border-radius: 50%;
+        }
+        
+        .animation_bg>div:nth-of-type(3) {
+            width: 100px;
+            top: 85%;
+            left: 25%;
+            height: 80px;
+            animation: first 8s linear infinite;
+            border: 1px solid white;
+            border-bottom: 1px solid #0f37371b;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        
+        .animation_bg>div:nth-of-type(4) {
+            width: 50px;
+            height: 100px;
+            top: 55%;
+            left: 35%;
+            animation: first 7s linear infinite;
+            border: 1px solid #0f37371b;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(5) {
+            width: 100px;
+            position: absolute;
+            height: 100px;
+            top: 70%;
+            left: 45%;
+            border: 1px solid #0f37371b;
+            animation: first 6s linear infinite;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(6) {
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 55%;
+            animation: first 8s linear infinite;
+            border: 1px solid #0f37371b;
+            clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(7) {
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 65%;
+            border: 1px solid #0f37371b;
+            animation: first 7s linear infinite;
+            clip-path: ellipse(25% 40% at 50% 50%);
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(8) {
+            width: 100px;
+            height: 100px;
+            top: 65%;
+            left: 70%;
+            animation: first 7s linear infinite;
+            border: 1px solid #0f37371b;
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(9) {
+            width: 100px;
+            height: 100px;
+            top: 55%;
+            left: 77%;
+            animation: first 6s linear infinite;
+            border: 1px solid #0f37371b;
+            clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        
+        .animation_bg>div:nth-of-type(10) {
+            width: 220px;
+            height: 100px;
+            top: 75%;
+            left: 75%;
+            animation: first 7s linear infinite;
+            border: 1px solid #0f37371b;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), transparent);
+        }
+        /* end  section background animation */
+        /* start nav */
+        
+        nav {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            z-index: 1000;
+            flex-direction: row;
+            position: sticky;
+            top: 20px;
+            justify-content: center;
+        }
+        
+        .nav {
+            width: 95%;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            z-index: 10000;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 0px 5px rgba(245, 245, 245, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .Logo {
+            display: flex;
+            transition: all .7s ease;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        
+        .Logo .logo-icon {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .Logo h1 {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: clamp(14px, 2vw, 26px);
+            background: radial-gradient(rgba(139, 37, 99, 0.8), rgba(255, 255, 255, 0.5));
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px #e0a3ff;
+            animation: second 2s linear infinite;
+        }
+        
+        @keyframes second {
+            0% {
+                text-shadow: 0 0 5px #e0a3ff;
+            }
+            100% {
+                text-shadow: 0 0 15px #e0a3ff;
+            }
+        }
+        
+        .Logo:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        
+        .nav>div:nth-of-type(2) {}
+        
+        .nav>div:nth-of-type(2) ul {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            gap: 20px;
+        }
+        
+        .nav div:nth-of-type(2) ul a {
+            color: white;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .nav div:nth-of-type(2) ul a:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            background: linear-gradient(45deg, rgb(250, 108, 185), rgb(172, 126, 228)) 0% 0% / 100%;
+            ;
+            height: 0;
+            width: 100%;
+            z-index: -2;
+            transition: .7s;
+            transform: translateY(-50%);
+            border-radius: 10px;
+        }
+        
+        .nav div:nth-of-type(2) ul a:hover:after {
+            height: 50%;
+        }
+        
+        .hr {
+            width: 90%;
+            display: flex;
+            margin: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav .menu i:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            background: linear-gradient(45deg, rgb(250, 108, 185), rgb(172, 126, 228)) 0% 0% / 100%;
+            ;
+            height: 0;
+            width: 100%;
+            z-index: -2;
+            transition: .4s;
+            transform: translateY(-50%);
+            border-radius: 10px;
+        }
+        
+        .nav .menu i:hover:after {
+            height: 40px;
+            width: 35px;
+        }
+        
+        .menu {
+            display: none;
+            z-index: 1;
+            color: white;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .menu i {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        /*--end nav */
+    </style>
+    </head>
+
+    <body>
+        <!-- start section for animation background -->
+        <section class="animation_bg">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+
+        </section>
+        <!-- end section for animation background -->
+        <nav>
+            <div class="nav">
+                <div class="Logo">
+                    <svg class="logo-icon" viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <lineargradient id="logoGradient" x1="0%" y1="0%"
+                                x2="100%" y2="100%">
+                                <stop offset="0%"
+                                    style="stop-color:#e0a3ff"></stop>
+                                <stop offset="50%"
+                                    style="stop-color:#ff69b4"></stop>
+                                <stop offset="100%"
+                                    style="stop-color:#9370db"></stop>
+                            </lineargradient>
+                        </defs>
+                        <circle cx="50" cy="30" r="8" fill="url(#logoGradient)"
+                            opacity="0.8">
+                            <animate attributeName="opacity" values="0.8;1;0.8"
+                                dur="2s" repeatCount="indefinite"></animate>
+                        </circle>
+                        <circle cx="30" cy="60" r="6" fill="url(#logoGradient)"
+                            opacity="0.6">
+                            <animate attributeName="opacity" values="0.6;1;0.6"
+                                dur="2.5s" repeatCount="indefinite"></animate>
+                        </circle>
+                        <circle cx="70" cy="65" r="7" fill="url(#logoGradient)"
+                            opacity="0.7">
+                            <animate attributeName="opacity" values="0.7;1;0.7"
+                                dur="1.8s" repeatCount="indefinite"></animate>
+                        </circle>
+                        <line x1="50" y1="30" x2="30" y2="60"
+                            stroke="url(#logoGradient)" stroke-width="2"
+                            opacity="0.6">
+                            <animate attributeName="opacity" values="0.6;1;0.6"
+                                dur="3s" repeatCount="indefinite"></animate>
+                        </line>
+                        <line x1="50" y1="30" x2="70" y2="65"
+                            stroke="url(#logoGradient)" stroke-width="2"
+                            opacity="0.6">
+                            <animate attributeName="opacity" values="0.6;1;0.6"
+                                dur="2.2s" repeatCount="indefinite"></animate>
+                        </line>
+                        <line x1="30" y1="60" x2="70" y2="65"
+                            stroke="url(#logoGradient)" stroke-width="2"
+                            opacity="0.6">
+                            <animate attributeName="opacity" values="0.6;1;0.6"
+                                dur="2.8s" repeatCount="indefinite"></animate>
+                        </line>
+                    </svg>
+                    <h1><a href="/">SmartBazaar</a></h1>
+                </div>
+
+                <div>
+                    <ul>
+                        <li><a target="_blank"
+                                href="{% url 'home' %}">Home</a></li>
+                        <li><a target="_blank"
+                                href="{% url 'product_list'%}">Products</a></li>
+                        <li><a href="{% url 'about'%}">About</a></li>
+                        <li><a href="{% url 'contact'%}">Contact</a></li>
+                        {% if user.is_authenticated %}
+                        <li> <a href="{% url 'profile' %}">Profile</a></li>
+
+                        {% else %}
+                        <li> <a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                        {% endif %}
+                    </ul>
+
+                    <span class="menu">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero About -->
+        <header class="section hero">
+            <p class="eyebrow">Simple & Calm</p>
+            <h2 class="title">Our Story of Simplicity and Quality</h2>
+            <p class="subtitle">
+                At SmartBazaar, we believe in keeping things easy: a calm
+                shopping experience, clear choices, and fair prices. We focus on
+                small details that make buying smoother and stress-free.
+            </p>
+        </header>
+
+        <div class="hr">
+            <hr />
+        </div>
+
+        <!-- Mission / Values -->
+        <section class="section values">
+            <h3 class="section__title">Our Philosophy</h3>
+            <div class="cards">
+                <article class="card">
+                    <div class="icon">🧭</div>
+                    <h4>Clear Purpose</h4>
+                    <p>We combine variety with simplicity — because your time
+                        deserves ease and clarity.</p>
+                </article>
+                <article class="card">
+                    <div class="icon">🌿</div>
+                    <h4>Calm Experience</h4>
+                    <p>A soft design, fast loading, and simple steps from
+                        browsing to checkout.</p>
+                </article>
+                <article class="card">
+                    <div class="icon">🤝</div>
+                    <h4>Mutual Trust</h4>
+                    <p>Honest descriptions, real reviews, and transparent return
+                        policies — no tricks, no rush.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="section stats">
+            <div class="stat">
+                <h5>+50K</h5>
+                <p>Monthly Visitors</p>
+            </div>
+            <div class="stat">
+                <h5>98%</h5>
+                <p>Customer Satisfaction</p>
+            </div>
+            <div class="stat">
+                <h5>24/7</h5>
+                <p>Support & Assistance</p>
+            </div>
+        </section>
+
+        <div class="hr">
+            <hr />
+        </div>
+
+        <!-- Story -->
+        <section class="section story">
+            <div class="story__media">
+                <img
+                    src="/media/product_images/ChatGPT_Image_Oct_16_2025_08_00_12_AM.png"
+                    alt="SmartBazaar workspace" />
+            </div>
+            <div class="story__text">
+                <h3>It All Started Simple</h3>
+                <p>
+                    SmartBazaar began with one small store and one idea: deliver
+                    what people need, peacefully. Over time, we grew, but kept
+                    the same soul — calm, honest, and focused on details.
+                </p>
+                <p>
+                    Today we work with trusted suppliers and review quality
+                    constantly. Our goal is to help you find what fits your life
+                    easily, and have it delivered with care.
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section cta">
+            <h3>Want to Know More?</h3>
+            <p>Reach out anytime — we’ll reply clearly and calmly.</p>
+            <a href="/contact" class="btn btn--primary">Contact Us</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="links">
+                <a href="/">Home</a>
+                <a href="/products">Products</a>
+                <a href="/about">About</a>
+                <a href="/privacy">Privacy</a>
+            </div>
+            <div class="information">
+                <p>© 2025 SmartBazaar. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
+
+</html>

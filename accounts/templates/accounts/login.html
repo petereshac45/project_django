@@ -2,28 +2,30 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="{% static 'products/style.css' %}">
-    <link rel="stylesheet" href="styles/fontawesome-free-7.0.1-web/fontawesome-free-7.0.1-web/css/all.min.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Page</title>
+        <link rel="stylesheet" href="{% static 'products/style.css' %}">
+        <link rel="stylesheet"
+            href="styles/fontawesome-free-7.0.1-web/fontawesome-free-7.0.1-web/css/all.min.css">
+    </head>
 
-<body>
-    <!-- start section for animation background -->
-    <section class="animation_bg">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+    <body>
+        <!-- start section for animation background -->
+        <section class="animation_bg">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
 
-    </section>
-    <!-- end section for animation background -->
-    <nav>
-        <div class="nav">
-            <div class="Logo">
-                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        </section>
+        <!-- end section for animation background -->
+        <nav>
+            <div class="nav">
+                <div class="Logo">
+                    <svg class="logo-icon" viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <lineargradient id="logoGradient" x1="0%" y1="0%"
                                 x2="100%" y2="100%">
@@ -69,47 +71,53 @@
                                 dur="2.8s" repeatCount="indefinite"></animate>
                         </line>
                     </svg>
-                <h1>SmartBazaar</h1>
-            </div>
+                    <h1><a href="/">SmartBazaar</a></h1>
+                </div>
 
-            <div>
-                <ul>
-                    <li><a href="{% url 'home' %}" target="_blank">Home</a></li>
-                    <li><a href="{% url 'product_list' %}" target="_blank">Products</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
-                    {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    {% endif %}
-                </ul>
+                <div>
+                    <ul>
+                        <li><a target="_blank"
+                                href="{% url 'home' %}">Home</a></li>
+                        <li><a target="_blank"
+                                href="{% url 'product_list'%}">Products</a></li>
+                        <li><a href="{% url 'about'%}">About</a></li>
+                        <li><a href="{% url 'contact'%}">Contact</a></li>
+                        {% if user.is_authenticated %}
+                        <li> <a href="{% url 'profile' %}">Profile</a></li>
 
-                <span class="menu">
+                        {% else %}
+                        <li> <a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                        {% endif %}
+                    </ul>
+
+                    <span class="menu">
                         <i class="fa-solid fa-bars-staggered"></i>
                     </span>
+                </div>
             </div>
-        </div>
-    </nav>
-    <section class="connection">
-        <div class="connection_form">
-            <h2>Login</h2>
+        </nav>
+        <section class="connection">
+            <div class="connection_form">
+                <h2>Login</h2>
 
-            {% if error %}
-            <p style="color:red;">{{ error }}</p>
-            {% endif %}
+                {% if error %}
+                <p style="color:red;">{{ error }}</p>
+                {% endif %}
 
-            <form method="post">
-                {% csrf_token %}
-                <input type="text" name="username" required placeholder="Username" class="name">
-                <input type="password" name="password" required placeholder="Password" class="password">
-                <button type="submit">Login</button>
-            </form>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="text" name="username" required
+                        placeholder="Username" class="name">
+                    <input type="password" name="password" required
+                        placeholder="Password" class="password">
+                    <button type="submit">Login</button>
+                </form>
 
-            <p>Don't have an account? <a href="{% url 'signup' %}">SignUp</a></p>
-        </div>
-    </section>
-</body>
+                <p>Don't have an account? <a
+                        href="{% url 'signup' %}">SignUp</a></p>
+            </div>
+        </section>
+    </body>
 
 </html>

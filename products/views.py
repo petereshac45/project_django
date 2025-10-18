@@ -6,7 +6,10 @@ from django.views import View
 
 class HomeView(TemplateView):
     template_name = 'products/home.html'
-
+class AboutView(TemplateView):
+    template_name = 'products/about.html'    
+class ContactView(TemplateView):
+    template_name = 'products/contact.html'  
 class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     queryset = Product.objects.filter(is_available=True)
