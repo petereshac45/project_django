@@ -23,7 +23,7 @@ from products.views import HomeView
 urlpatterns = [
     path('admin/', admin.site.urls),
      path('', HomeView.as_view() , name='home'),
-       path('Products/', include('products.urls')),
+       path('products/', include('products.urls')),
        path('accounts/', include('accounts.urls')),
         path("orders/", include("orders.urls")),
            path("cart/", include("cart.urls")),
